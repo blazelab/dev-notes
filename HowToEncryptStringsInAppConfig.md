@@ -3,11 +3,11 @@ Encrypting Settings in App Config
 
 [Source:  http://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file](http://weblogs.asp.net/jongalloway/encrypting-passwords-in-a-net-app-config-file)
 
-<code>
+<pre><code>
 static byte[] entropy = System.Text.Encoding.Unicode.GetBytes("Salt Is Not A Password");
-</code>
+</code></pre>
 
-<code>
+<pre><code>
 public static string EncryptString(System.Security.SecureString input)
 {
     byte[] encryptedData = System.Security.Cryptography.ProtectedData.Protect(
@@ -16,8 +16,9 @@ public static string EncryptString(System.Security.SecureString input)
         System.Security.Cryptography.DataProtectionScope.CurrentUser);
     return Convert.ToBase64String(encryptedData);
 }
-</code>
-<code>
+</code></pre>
+
+<pre><code>
 public static SecureString DecryptString(string encryptedData)
 {
     try
@@ -33,8 +34,8 @@ public static SecureString DecryptString(string encryptedData)
         return new SecureString();
     }
 }
-</code>
-<code>
+</code></pre>
+<pre><code>
 public static SecureString ToSecureString(string input)
 {
     SecureString secure = new SecureString();
@@ -45,8 +46,8 @@ public static SecureString ToSecureString(string input)
     secure.MakeReadOnly();
     return secure;
 }
-</code>
-<code>
+</code></pre>
+<pre><code>
 public static string ToInsecureString(SecureString input)
 {
     string returnValue = string.Empty;
@@ -61,11 +62,11 @@ public static string ToInsecureString(SecureString input)
     }
     return returnValue;
 }
-</code>
+</code></pre>
 
-<code>
+<pre><code>
 AppSettings.Password = EncryptString(ToSecureString(PasswordTextBox.Password));
-</code>
+</code></pre>
 
 
 [Additional Resources] (http://www.builderau.com.au/program/dotnet/soa/Encrypting-NET-configuration-files-through-code/0,339028399,339281837,00.htm)
