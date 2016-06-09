@@ -16,7 +16,8 @@ public static string EncryptString(System.Security.SecureString input)
         System.Security.Cryptography.DataProtectionScope.CurrentUser);
     return Convert.ToBase64String(encryptedData);
 }
-
+</code>
+<code>
 public static SecureString DecryptString(string encryptedData)
 {
     try
@@ -32,7 +33,8 @@ public static SecureString DecryptString(string encryptedData)
         return new SecureString();
     }
 }
-
+</code>
+<code>
 public static SecureString ToSecureString(string input)
 {
     SecureString secure = new SecureString();
@@ -43,7 +45,8 @@ public static SecureString ToSecureString(string input)
     secure.MakeReadOnly();
     return secure;
 }
-
+</code>
+<code>
 public static string ToInsecureString(SecureString input)
 {
     string returnValue = string.Empty;
@@ -59,7 +62,6 @@ public static string ToInsecureString(SecureString input)
     return returnValue;
 }
 </code>
-
 
 <code>
 AppSettings.Password = EncryptString(ToSecureString(PasswordTextBox.Password));
